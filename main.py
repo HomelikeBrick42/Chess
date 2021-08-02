@@ -122,11 +122,14 @@ def move_valid(from_x: int, from_y: int, to_x: int, to_y: int, board: list[list[
         return False, "You cannot attack your own team!"
 
     if from_piece.upper() == 'P':
-        if abs(dist_x) == 1 and (from_is_upper and dist_y == 1) or (not from_is_upper and dist_y == -1):
-            if is_attacking:
+        if (from_is_upper and dist_y == 1) or (not from_is_upper and dist_y == -1):
+            if abs(dist_x) == 1:
+                if is_attacking:
+                    return True, ""
+                else:
+                    return False, "You can only move diagonal when attacking!"
+            elif abs(dist_x) == 0:
                 return True, ""
-            else:
-                return False, "You can only move diagonal when attacking!"
         elif (from_is_upper and dist_y == 2) or (not from_is_upper and dist_y == -2):
             if not is_attacking:
                 if from_is_upper and from_y == 1:
