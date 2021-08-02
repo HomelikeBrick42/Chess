@@ -128,7 +128,7 @@ def move_valid(from_x: int, from_y: int, to_x: int, to_y: int, board: list[list[
                     return True, ""
                 else:
                     return False, "You can only move diagonal when attacking!"
-            elif abs(dist_x) == 0:
+            elif dist_x == 0:
                 return True, ""
         elif (from_is_upper and dist_y == 2) or (not from_is_upper and dist_y == -2):
             if not is_attacking:
