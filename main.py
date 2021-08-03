@@ -281,7 +281,7 @@ def main() -> None:
 
         (king_x, king_y) = get_piece_pos(board, 'k' if lowercase_turn else 'K')
         if in_check(board, king_x, king_y, lowercase_turn):
-            def get_board_safe(y, x) -> chr:
+            def get_board_safe(y: int, x: int) -> chr:
                 try:
                     return board[y][x]
                 except IndexError:
@@ -318,7 +318,7 @@ def main() -> None:
 
             if not can_move:
                 print(f"Checkmate! {'Orange' if lowercase_turn else 'Blue'} won!")
-                return
+                break
 
         if len(error_message) > 0:
             print(f"{error_message}")
@@ -338,12 +338,13 @@ def main() -> None:
             error_message = "Its not your turn!"
             continue
 
+        # TODO: Should this added back? It just adds more complexity and issues with the code
         if in_check(board, king_x, king_y, lowercase_turn) and from_piece != ('k' if lowercase_turn else 'K'):
             error_message = "You have to move your king you are in check!"
             continue
 
         (to_x, to_y, _) = input_coord(f"Move {piece_to_string[from_piece]} ({coord_str}) to where? ")
-        to_piece = board[to_y][to_x]
+        # to_piece = board[to_y][to_x]
 
         (valid, error) = move_valid(from_x, from_y, to_x, to_y, board)
         if not valid:
