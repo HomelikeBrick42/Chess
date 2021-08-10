@@ -240,9 +240,37 @@ def get_piece_pos(board: list[list[chr]], match: chr) -> (int, int):
     return -1, -1
 
 
+def show_instructions() -> None:
+    print("Q or q: Queen")
+    print("    The queen can move vertically, horizontally, or diagonally in a straight line")
+    print()
+    print("K or k: King")
+    print("    The king can move on unit in any direction")
+    print()
+    print("B or b: Bishop")
+    print("    The bishop can move diagonally in a straight line")
+    print()
+    print("H or h: Horse")
+    print("    The horse can move in a L shape e.g. 2 up 1 left")
+    print()
+    print("R or r: Rook")
+    print("    The rook can move vertically or horizontally in a straight line")
+    print()
+    print("P or p: Pawn")
+    print("    The pawn can move 1 square forward, 2 on its first turn, and to attack it moves 1 square diagonally")
+    print()
+
+
 def main() -> None:
+    # Enable color printing
     if os.name == "nt":  # Windows
         os.system("color")
+
+    show_instructions()
+    if os.name == "nt":  # Windows
+        os.system("pause")
+    else:
+        assert (False and "Internal Error: Find out how to do this on linux")
 
     piece_to_string: dict[chr, str] = {
         'Q': "Queen",
