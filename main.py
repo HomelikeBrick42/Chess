@@ -338,7 +338,7 @@ def main() -> None:
             error_message = "Its not your turn!"
             continue
 
-        # TODO: Should this added back? It just adds more complexity and issues with the code
+        # TODO: Should this removed? It just adds more complexity and issues with the code
         if in_check(board, king_x, king_y, lowercase_turn) and from_piece != ('k' if lowercase_turn else 'K'):
             error_message = "You have to move your king you are in check!"
             continue
