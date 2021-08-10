@@ -402,7 +402,7 @@ def main() -> None:
             while True:
                 piece = input("Please enter a piece that you want to promote the pawn to: ")
                 if piece_to_string.get(piece.lower()) is None or piece.lower() == 'k':
-                    print("Please enter a valid piece that you want to promote your pawn to")
+                    print("Please enter a valid piece")
                     continue
                 break
             board[to_y][to_x] = piece.lower() if lowercase_turn else piece.upper()
