@@ -401,7 +401,7 @@ def main() -> None:
             print("You have gotten a pawn to the other side of the board!")
             while True:
                 piece = input("Please enter a piece that you want to promote the pawn to: ")
-                if piece_to_string.get(piece.lower()) is None or piece.lower() == 'k':
+                if piece_to_string.get(piece.lower()) is None or piece.lower() == 'k' or piece.lower() == 'p':
                     print("Please enter a valid piece")
                     continue
                 break
