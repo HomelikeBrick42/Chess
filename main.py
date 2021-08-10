@@ -397,6 +397,16 @@ def main() -> None:
                 error_message = "You cannot move into check!"
                 continue
 
+        if (from_piece == 'P' and to_y == 7) or (from_piece == 'p' and to_y == 0):
+            print("You have gotten a pawn to the other side of the board!")
+            while True:
+                piece = input("Please enter a piece that you want to promote the pawn to: ")
+                if piece_to_string.get(piece.lower()) is None or piece.lower() == 'k':
+                    print("Please enter a valid piece that you want to promote your pawn to")
+                    continue
+                break
+            board[to_y][to_x] = piece.lower() if lowercase_turn else piece.upper()
+
         lowercase_turn = not lowercase_turn
 
 
