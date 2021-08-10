@@ -80,7 +80,9 @@ def draw_board(board: list[list[chr]]) -> None:
 def input_coord(question: str) -> (int, int, str):
     while True:
         coord = input(question).strip().upper()
-        if len(coord) != 2:
+        if (len(coord) == 1 and coord[0].lower() == 'x') or len(coord) == 0:
+            return -1, -1, coord
+        elif len(coord) != 2:
             print("Please enter valid coord e.g. C6, B2")
             continue
 
@@ -325,6 +327,9 @@ def main() -> None:
             error_message = ""
 
         (from_x, from_y, coord_str) = input_coord("What piece do you want to move? ")
+        if from_x == -1 or from_y == -1:
+            error_message = "Move canceled"
+            continue
         from_piece = board[from_y][from_x]
 
         if from_piece == ' ':
@@ -344,6 +349,9 @@ def main() -> None:
             continue
 
         (to_x, to_y, _) = input_coord(f"Move {piece_to_string[from_piece]} ({coord_str}) to where? ")
+        if to_x == -1 or to_y == -1:
+            error_message = "Move canceled"
+            continue
         # to_piece = board[to_y][to_x]
 
         (valid, error) = move_valid(from_x, from_y, to_x, to_y, board)
