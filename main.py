@@ -80,19 +80,19 @@ def draw_board(board: list[list[chr]]) -> None:
 def input_coord(question: str) -> (int, int, str):
     while True:
         coord = input(question).strip().upper()
-        if (len(coord) == 1 and coord[0].lower() == 'x') or len(coord) == 0:
+        if len(coord) == 0:
             return -1, -1, coord
         elif len(coord) != 2:
             print("Please enter valid coord e.g. C6, B2")
             continue
 
         coord_x = ord(coord[0]) - ord('A')
-        if 1 > coord_x > 8:
+        if coord_x < 0 or coord_x > 7:
             print(f"Coordinate ({coord}) is out of range!")
             continue
 
         coord_y = ord(coord[1]) - ord('1')
-        if 1 > coord_y > 8:
+        if coord_y < 0 or coord_y > 7:
             print(f"Coordinate ({coord}) is out of range!")
             continue
 
@@ -262,9 +262,11 @@ def show_instructions() -> None:
 
 
 def main() -> None:
-    # Enable color printing
     if os.name == "nt":  # Windows
         os.system("color")
+        os.system("cls")
+    else:
+        os.system("clear")
 
     show_instructions()
     if os.name == "nt":  # Windows
@@ -356,7 +358,6 @@ def main() -> None:
 
         (from_x, from_y, coord_str) = input_coord("What piece do you want to move? ")
         if from_x == -1 or from_y == -1:
-            error_message = "Move canceled"
             continue
         from_piece = board[from_y][from_x]
 
