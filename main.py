@@ -397,8 +397,7 @@ def main() -> None:
                 board[to_y][to_x] = ' '
                 error_message = "You cannot move into check!"
                 continue
-
-        if (from_piece == 'P' and to_y == 7) or (from_piece == 'p' and to_y == 0):
+        elif (from_piece == 'P' and to_y == 7) or (from_piece == 'p' and to_y == 0):
             print("You have gotten a pawn to the other side of the board!")
             while True:
                 piece = input("Please enter a piece that you want to promote the pawn to: ")
