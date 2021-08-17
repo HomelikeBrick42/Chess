@@ -1,5 +1,3 @@
-import os
-
 import terminal_util
 import chess
 
@@ -112,6 +110,7 @@ def main() -> None:
             continue
 
         # TODO: Should this removed? It just adds more complexity and issues with the code
+        (king_x, king_y) = chess.get_king_pos(board, 'k' if lowercase_turn else 'K')
         if chess.in_check(board, king_x, king_y, lowercase_turn) and from_piece != ('k' if lowercase_turn else 'K'):
             error_message = "You have to move your king you are in check!"
             continue
