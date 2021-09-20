@@ -25,22 +25,28 @@ def input_coord(question: str) -> (int, int, str):
 
 
 def show_instructions() -> None:
-    print("Q or q: Queen")
+    print(
+        f"{chess.get_piece_color('Q')}Q{terminal_util.Colors.RESET} or {chess.get_piece_color('q')}q{terminal_util.Colors.RESET}: Queen")
     print("    The queen can move vertically, horizontally, or diagonally in a straight line")
     print()
-    print("K or k: King")
+    print(
+        f"{chess.get_piece_color('K')}K{terminal_util.Colors.RESET} or {chess.get_piece_color('k')}k{terminal_util.Colors.RESET}: King")
     print("    The king can move on unit in any direction")
     print()
-    print("B or b: Bishop")
+    print(
+        f"{chess.get_piece_color('B')}b{terminal_util.Colors.RESET} or {chess.get_piece_color('b')}b{terminal_util.Colors.RESET}: Bishop")
     print("    The bishop can move diagonally in a straight line")
     print()
-    print("H or h: Horse")
+    print(
+        f"{chess.get_piece_color('H')}H{terminal_util.Colors.RESET} or {chess.get_piece_color('h')}h{terminal_util.Colors.RESET}: Horse")
     print("    The horse can move in a L shape e.g. 2 up 1 left")
     print()
-    print("R or r: Rook")
+    print(
+        f"{chess.get_piece_color('R')}R{terminal_util.Colors.RESET} or {chess.get_piece_color('r')}r{terminal_util.Colors.RESET}: Rook")
     print("    The rook can move vertically or horizontally in a straight line")
     print()
-    print("P or p: Pawn")
+    print(
+        f"{chess.get_piece_color('P')}P{terminal_util.Colors.RESET} or {chess.get_piece_color('p')}p{terminal_util.Colors.RESET}: Pawn")
     print("    The pawn can move 1 square forward, 2 on its first turn, and to attack it moves 1 square diagonally")
     print()
 
@@ -87,7 +93,7 @@ def main() -> None:
         chess.draw_board(board)
 
         if chess.is_checkmate(board, lowercase_turn):
-            print(f"Checkmate! {'Orange' if lowercase_turn else 'Blue'} won!")
+            print(f"Checkmate! {'Red' if lowercase_turn else 'Purple'} won!")
 
         if len(error_message) > 0:
             print(f"{error_message}")

@@ -3,9 +3,9 @@ import terminal_util
 
 def get_piece_color(piece: chr) -> str:
     if piece.upper() == piece:
-        return terminal_util.Colors.BRIGHT_YELLOW
+        return terminal_util.Colors.BRIGHT_RED + terminal_util.Colors.BOLD
     else:
-        return terminal_util.Colors.BRIGHT_CYAN
+        return terminal_util.Colors.BRIGHT_MAGENTA + terminal_util.Colors.BOLD
 
 
 def draw_board(board: list[list[chr]]) -> None:
@@ -15,6 +15,7 @@ def draw_board(board: list[list[chr]]) -> None:
     print()
 
     i = 1
+    j = 0
     for y in board:
         print("   ", end="")
         for _ in y:
@@ -22,10 +23,14 @@ def draw_board(board: list[list[chr]]) -> None:
         print(f"-\n {chr(ord('0') + i)} |", end="")
 
         for piece in y:
-            print(f" {get_piece_color(piece)}{piece}{terminal_util.Colors.RESET} |", end="")
+            j += 1
+            print(
+                f"{terminal_util.Colors.BACKGROUND_BRIGHT_BLACK if j % 2 == 0 else terminal_util.Colors.BACKGROUND_BRIGHT_WHITE}{get_piece_color(piece)} {piece} {terminal_util.Colors.RESET}|",
+                end="")
         print(f" {chr(ord('0') + i)}")
 
         i += 1
+        j += 1
 
     print("   ", end="")
     for _ in board[0]:
