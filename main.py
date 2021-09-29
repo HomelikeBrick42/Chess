@@ -94,6 +94,7 @@ def main() -> None:
 
         if chess.is_checkmate(board, lowercase_turn):
             print(f"Checkmate! {'Red' if lowercase_turn else 'Purple'} won!")
+            return
 
         if len(error_message) > 0:
             print(f"{error_message}")
