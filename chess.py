@@ -8,28 +8,31 @@ def get_piece_color(piece: chr) -> str:
         return terminal_util.Colors.BRIGHT_MAGENTA + terminal_util.Colors.BOLD
 
 
-def draw_board(board: list[list[chr]]) -> None:
+def draw_board(board: list[list[chr]], flip: bool) -> None:
     print("   ", end="")
     for i in range(8):
         print(f"  {chr(ord('A') + i)} ", end="")
     print()
 
-    i = 1
-    j = 0
-    for y in board:
+    i = len(board) if flip else 1
+    j = 1 if flip else 0
+    for y in reversed(board) if flip else board:
         print("   ", end="")
         for _ in y:
             print("----", end="")
         print(f"-\n {chr(ord('0') + i)} |", end="")
 
-        for piece in y:
+        for piece in reversed(y) if flip else y:
             j += 1
             print(
                 f"{terminal_util.Colors.BACKGROUND_BRIGHT_BLACK if j % 2 == 0 else terminal_util.Colors.BACKGROUND_BRIGHT_WHITE}{get_piece_color(piece)} {piece} {terminal_util.Colors.RESET}|",
                 end="")
         print(f" {chr(ord('0') + i)}")
 
-        i += 1
+        if flip:
+            i -= 1
+        else:
+            i += 1
         j += 1
 
     print("   ", end="")

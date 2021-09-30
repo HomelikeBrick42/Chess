@@ -90,7 +90,7 @@ def main() -> None:
     while True:
         terminal_util.clear()
 
-        chess.draw_board(board)
+        chess.draw_board(board, not lowercase_turn)
 
         if chess.is_checkmate(board, lowercase_turn):
             print(f"Checkmate! {'Red' if lowercase_turn else 'Purple'} won!")
