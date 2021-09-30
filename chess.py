@@ -15,7 +15,7 @@ def draw_board(board: list[list[chr]], flip: bool) -> None:
     print()
 
     i = len(board) if flip else 1
-    j = 1 if flip else 0
+    j = 0
     for y in reversed(board) if flip else board:
         print("   ", end="")
         for _ in y:
