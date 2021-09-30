@@ -10,7 +10,7 @@ def get_piece_color(piece: chr) -> str:
 
 def draw_board(board: list[list[chr]], flip: bool) -> None:
     print("   ", end="")
-    for i in range(8):
+    for i in reversed(range(8)) if flip else range(8):
         print(f"  {chr(ord('A') + i)} ", end="")
     print()
 
@@ -41,7 +41,7 @@ def draw_board(board: list[list[chr]], flip: bool) -> None:
     print("-")
 
     print("   ", end="")
-    for i in range(8):
+    for i in reversed(range(8)) if flip else range(8):
         print(f"  {chr(ord('A') + i)} ", end="")
     print()
 
